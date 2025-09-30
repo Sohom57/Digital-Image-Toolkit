@@ -159,10 +159,7 @@ class DigitalImageToolkit:
         advanced_frame = ttk.LabelFrame(ops_frame, text="Advanced Operations", padding="5")
         advanced_frame.grid(row=0, column=4, sticky=tk.W+tk.E)
         
-        # --- START OF CHANGES ---
-        # Changed button text and command to use the new Laplacian function.
         ttk.Button(advanced_frame, text="Laplacian Edge", command=self.run_laplacian_edge).pack(pady=2, fill=tk.X)
-        # --- END OF CHANGES ---
         
         ttk.Button(advanced_frame, text="Scaled Log Transform", command=self.run_log_transform).pack(pady=2, fill=tk.X)
         ttk.Button(advanced_frame, text="Log Transform (C=1)", command=self.run_log_transform_c1).pack(pady=2, fill=tk.X)
