@@ -63,8 +63,8 @@ Follow these steps to run the application on your local machine.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/sohom57/digital-image-toolkit.git](https://github.com/sohom57/digital-image-toolkit.git)
-    cd digital-image-toolkit
+    git clone [https://github.com/Sohom57/Digital-Image-Toolkit.git](https://github.com/Sohom57/Digital-Image-Toolkit.git)
+    cd Digital-Image-Toolkit
     ```
 
 2.  **Create and activate a virtual environment (recommended):**

@@ -220,6 +220,60 @@ class DigitalImageToolkit:
             self.progress_bar['value'] = value
             self.root.update_idletasks()
         
+<<<<<<< HEAD
+=======
+        # Resize Operations Frame
+        resize_frame = ttk.LabelFrame(ops_frame, text="Resize Operations", padding="5")
+        resize_frame.grid(row=0, column=2, sticky=tk.W+tk.E, padx=(0, 10))
+        size_frame = ttk.Frame(resize_frame)
+        size_frame.pack(pady=2, fill=tk.X)
+        ttk.Label(size_frame, text="Size (WxH):").pack(side=tk.LEFT)
+        self.resize_var = tk.StringVar(value="400x300")
+        ttk.Entry(size_frame, textvariable=self.resize_var, width=10).pack(side=tk.LEFT, padx=(5, 5))
+        ttk.Button(size_frame, text="Resize", command=self.run_resize).pack(side=tk.LEFT)
+        
+        # Filtering Operations Frame
+        filter_frame = ttk.LabelFrame(ops_frame, text="Filtering Operations", padding="5")
+        filter_frame.grid(row=0, column=3, sticky=tk.W+tk.E, padx=(0, 10))
+        smooth_frame = ttk.Frame(filter_frame)
+        smooth_frame.pack(pady=2, fill=tk.X)
+        ttk.Label(smooth_frame, text="Kernel:").pack(side=tk.LEFT)
+        self.smooth_var = tk.StringVar(value="3")
+        ttk.Entry(smooth_frame, textvariable=self.smooth_var, width=5).pack(side=tk.LEFT, padx=(5, 5))
+        ttk.Button(smooth_frame, text="Smooth", command=self.run_smooth).pack(side=tk.LEFT)
+        
+        sharp_frame = ttk.Frame(filter_frame)
+        sharp_frame.pack(pady=2, fill=tk.X)
+        ttk.Label(sharp_frame, text="Intensity:").pack(side=tk.LEFT)
+        self.sharp_var = tk.StringVar(value="1.0")
+        ttk.Entry(sharp_frame, textvariable=self.sharp_var, width=5).pack(side=tk.LEFT, padx=(5, 5))
+        ttk.Button(sharp_frame, text="Sharpen", command=self.run_sharpen).pack(side=tk.LEFT)
+        
+        # Advanced Operations Frame
+        advanced_frame = ttk.LabelFrame(ops_frame, text="Advanced Operations", padding="5")
+        advanced_frame.grid(row=0, column=4, sticky=tk.W+tk.E)
+        
+        ttk.Button(advanced_frame, text="Laplacian Edge", command=self.run_laplacian_edge).pack(pady=2, fill=tk.X)
+        
+        ttk.Button(advanced_frame, text="Scaled Log Transform", command=self.run_log_transform).pack(pady=2, fill=tk.X)
+        ttk.Button(advanced_frame, text="Log Transform (C=1)", command=self.run_log_transform_c1).pack(pady=2, fill=tk.X)
+        ttk.Button(advanced_frame, text="Show Histogram", command=self.run_histogram).pack(pady=2, fill=tk.X)
+        
+    def _calculate_fit_zoom(self, image, canvas):
+        if image is None: return 1.0
+        
+        canvas.update_idletasks()
+        canvas_width = canvas.winfo_width()
+        canvas_height = canvas.winfo_height()
+        img_width, img_height = image.size
+        
+        if img_width == 0 or img_height == 0: return 1.0
+            
+        scale_x = canvas_width / img_width
+        scale_y = canvas_height / img_height
+        return min(scale_x, scale_y)
+
+>>>>>>> f8c3572276794ddeae5ec0d7b3e0c29e85bb58f4
     def select_image(self):
         file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg *.jpeg *.png *.bmp *.tiff")])
         if not file_path: return
@@ -375,6 +429,7 @@ class DigitalImageToolkit:
         except ValueError: messagebox.showerror("Error", "Threshold must be an integer between 0 and 255.")
     def run_contrast(self):
         try:
+<<<<<<< HEAD
             val = float(self.contrast_var.get())
             if val <= 0: raise ValueError()
             self._run_operation(operations.adjust_contrast, val)
@@ -405,3 +460,21 @@ class DigitalImageToolkit:
     def run_log_transform(self): self._run_operation(operations.log_transformation)
     def run_log_transform_c1(self): self._run_operation(operations.log_transform_c1)
     def run_histogram(self): self._run_operation(operations.show_histogram)
+=======
+            alpha = float(self.contrast_var.get())
+            if alpha <= 0:
+                messagebox.showerror("Error", "Contrast factor alpha must be positive")
+                return
+            self._run_operation(operations.adjust_contrast, alpha)
+        except ValueError:
+            messagebox.showerror("Error", "Please enter a valid float for contrast factor")
+
+    def run_log_transform(self):
+        self._run_operation(operations.log_transformation)
+        
+    def run_log_transform_c1(self):
+        self._run_operation(operations.log_transform_c1)
+
+    def run_histogram(self):
+        self._run_operation(operations.show_histogram)
+>>>>>>> f8c3572276794ddeae5ec0d7b3e0c29e85bb58f4
