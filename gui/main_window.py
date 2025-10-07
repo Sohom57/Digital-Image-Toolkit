@@ -237,13 +237,17 @@ class DigitalImageToolkit:
             
             self.original_array = np.array(self.original_image)
             self.image_path.set(file_path)
-            
+
             self.enhanced_canvas.delete("all")
             self.enhanced_image = None
             self.enhanced_array = None
             self.enhanced_photo = None
-            
-            self.reset_enhanced_image()
+
+            self.original_zoom_level = self._calculate_fit_zoom(self.original_image, self.original_canvas)
+            self.display_image(self.original_image, self.original_canvas, is_original=True)
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not load image: {e}")
 
         except Exception as e:
             messagebox.showerror("Error", f"Could not load image: {e}")
