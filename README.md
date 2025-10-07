@@ -1,26 +1,30 @@
 # Digital Image Processing Toolkit
 
-A desktop application built with Python and Tkinter for performing various digital image processing operations. The toolkit provides a user-friendly interface to load an image, apply enhancements and transformations, and view the original and processed images side-by-side.
+A desktop application built with Python and Tkinter for performing various digital image processing operations. It features a redesigned, user-friendly tabbed interface, allowing for a clean workflow and the ability to chain multiple effects.
 
 
 
 ## ✨ Features
 
-- **File Operations**: Select and save images in various formats (`.png`, `.jpg`, `.bmp`).
-- **Basic Operations**:
-    - Convert to Grayscale
-    - Image Negation
-    - Binary Thresholding
-    - Contrast Adjustment
-- **Resize Operations**:
-    - Resize image to custom dimensions.
-- **Filtering**:
-    - Image Smoothing (Mean Filter)
-    - Image Sharpening
-- **Advanced Operations**:
-    - Edge Detection (Sobel Operator)
-    - Logarithmic Transformations (Scaled and `C=1`)
-    - Histogram Visualization
+The toolkit provides a rich set of functionalities for image manipulation and analysis.
+
+#### **Image Operations**
+* **Basic Adjustments**: Convert to Grayscale, Image Negation, Binary Thresholding.
+* **Tonal Adjustments**: Adjust Contrast, apply Scaled & Fixed Logarithmic Transformations.
+* **Filtering**: Image Smoothing (Box Blur) and Sharpening.
+* **Analysis**: Edge Detection (Laplacian) and Histogram Visualization.
+
+#### **Geometric Transformations**
+* **Resize**: Scale images to custom dimensions (width and height).
+* **Rotate**: Rotate images by any specified degree.
+
+#### **Workflow & UI**
+* **Chain Operations**: Apply effects sequentially to either the original image or the already enhanced image.
+* **Reset Functionality**: Instantly revert the enhanced image back to the original at any time.
+* **Interactive Viewer**: Zoom in and out with the mouse wheel and **Pan/Drag** the zoomed image by clicking and dragging.
+* **Progress Bar**: Provides visual feedback during time-consuming operations like smoothing or rotation.
+* **Modern UI**: A clean, tabbed layout keeps controls organized and maximizes space for image viewing.
+* **File Handling**: Select and save images in common formats (`.png`, `.jpg`).
 
 ## 📂 Project Structure
 
@@ -45,7 +49,7 @@ digital-image-toolkit/
 ```
 
 -   **`main.py`**: The main entry point to launch the application.
--   **`gui/main_window.py`**: Defines the entire Tkinter-based user interface.
+-   **`gui/main_window.py`**: Defines the entire Tkinter-based user interface and event handling.
 -   **`processing/operations.py`**: Contains all the core functions for image manipulation.
 -   **`utils/helpers.py`**: Includes helper functions used across the application.
 -   **`assets/`**: Stores static assets like images.
@@ -55,7 +59,6 @@ digital-image-toolkit/
 Follow these steps to run the application on your local machine.
 
 ### **Prerequisites**
-
 -   Python 3.6+
 -   pip (Python package installer)
 
@@ -90,5 +93,3 @@ With the setup complete, run the main application file from the project's root d
 ```sh
 python main.py
 ```
-
-This will launch the Digital Image Processing Toolkit window.
